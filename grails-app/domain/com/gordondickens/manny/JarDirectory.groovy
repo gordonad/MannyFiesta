@@ -1,4 +1,4 @@
-package org.gordondickens.manny
+package com.gordondickens.manny
 
 class JarDirectory {
 

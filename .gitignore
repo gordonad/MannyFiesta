@@ -22,3 +22,4 @@ spring-integration-gemfire/RECOVERY_*
 surefire*
 *.swp
 target
+web-app/WEB-INF/classes/
