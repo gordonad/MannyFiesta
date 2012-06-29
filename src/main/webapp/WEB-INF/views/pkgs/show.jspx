@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_gordondickens_manny_domain_Pkg" object="${pkg}" path="/pkgs" z="OuLZJ6lZBCRoMRs4ilz6eCIo+xM=">
+        <field:display field="name" id="s_com_gordondickens_manny_domain_Pkg_name" object="${pkg}" z="fkxp4DBR2NmATMqNjjA5skP/vV4="/>
+        <field:display field="minVersion" id="s_com_gordondickens_manny_domain_Pkg_minVersion" object="${pkg}" z="K9Aw43RsU7syNR73Unl4eTsnOaA="/>
+        <field:display field="maxVersion" id="s_com_gordondickens_manny_domain_Pkg_maxVersion" object="${pkg}" z="NquZHlfBGM/YHL/zcGTavn66OGA="/>
+    </page:show>
+</div>

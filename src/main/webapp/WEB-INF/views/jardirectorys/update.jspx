@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_com_gordondickens_manny_domain_JarDirectory" modelAttribute="jarDirectory" path="/jardirectorys" versionField="Version" z="Ru72/6tveHRIELwJow89AZREM6k=">
+        <field:input field="name" id="c_com_gordondickens_manny_domain_JarDirectory_name" min="1" required="true" z="7NmsevOzGwafr1yo2plwWY3MMMI="/>
+        <field:simple field="Bundles" id="c_com_gordondickens_manny_domain_JarDirectory_Bundles" messageCode="entity_reference_not_managed" messageCodeAttribute="Bundle" z="1v4zcHjk4WbKRF856r8Xbc7rwAw="/>
+    </form:update>
+</div>
