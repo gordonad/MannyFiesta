@@ -1,23 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" id="menu" version="2.0">
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu"
+     id="menu" version="2.0">
+
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
-    <menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
-        <menu:category id="c_bundle" z="4D5MaPmac8qENgy5YQvaarjvFDk=">
-            <menu:item id="i_bundle_new" messageCode="global_menu_new" url="/bundles?form" z="i/bsQhF0lr4NT6+KbqZly9jahQk="/>
-            <menu:item id="i_bundle_list" messageCode="global_menu_list" url="/bundles?page=1&amp;size=${empty param.size ? 10 : param.size}" z="0luY6nt/9O5o17F8kqHVW38CI/k="/>
+    <menu:menu id="_menu">
+        <menu:category id="c_bundle">
+            <menu:item id="i_bundle_new" messageCode="global_menu_new" url="/bundles?form"/>
+            <menu:item id="i_bundle_list" messageCode="global_menu_list"
+                       url="/bundles?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
         </menu:category>
-        <menu:category id="c_manifestdetail" z="5yDbmKfRZ5ytag2mZYVzoUOdDeI=">
-            <menu:item id="i_manifestdetail_new" messageCode="global_menu_new" url="/manifestdetails?form" z="e/smOA9vhAbPgtpfTjLe0ecs5Xw="/>
-            <menu:item id="i_manifestdetail_list" messageCode="global_menu_list" url="/manifestdetails?page=1&amp;size=${empty param.size ? 10 : param.size}" z="buZ3EerjBy3gx7M9lHyX6VVVzZg="/>
+        <menu:category id="c_manifestdetail">
+            <menu:item id="i_manifestdetail_new" messageCode="global_menu_new" url="/manifestdetails?form"/>
+            <menu:item id="i_manifestdetail_list" messageCode="global_menu_list"
+                       url="/manifestdetails?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
         </menu:category>
-        <menu:category id="c_jardirectory" z="ZW3ifOj5hC78akl2EUENvSeDtEA=">
-            <menu:item id="i_jardirectory_new" messageCode="global_menu_new" url="/jardirectorys?form" z="oEgacOLUXQsGRgzE1s4ZNbQdePw="/>
-            <menu:item id="i_jardirectory_list" messageCode="global_menu_list" url="/jardirectorys?page=1&amp;size=${empty param.size ? 10 : param.size}" z="x7BpA1A5vFl+BPqYN3uue0qTwYk="/>
+        <menu:category id="c_jardirectory">
+            <menu:item id="i_jardirectory_new" messageCode="global_menu_new" url="/jardirectorys?form"/>
+            <menu:item id="i_jardirectory_list" messageCode="global_menu_list"
+                       url="/jardirectorys?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
         </menu:category>
-        <menu:category id="c_pkg" z="eMruTBY5vvFvX9QXWEY8gsuFMpE=">
-            <menu:item id="i_pkg_new" messageCode="global_menu_new" url="/pkgs?form" z="+gUnI67M0/LjRnGnIIw7jojoB8c="/>
-            <menu:item id="i_pkg_list" messageCode="global_menu_list" url="/pkgs?page=1&amp;size=${empty param.size ? 10 : param.size}" z="6I0y7J2ueV+xpaCQKMniSmryt10="/>
+        <menu:category id="c_pkg">
+            <menu:item id="i_pkg_new" messageCode="global_menu_new" url="/pkgs?form"/>
+            <menu:item id="i_pkg_list" messageCode="global_menu_list"
+                       url="/pkgs?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
         </menu:category>
     </menu:menu>
 </div>

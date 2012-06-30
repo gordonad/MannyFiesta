@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:page="urn:jsptagdir:/WEB-INF/tags/form"
+     xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
-    <page:list id="pl_com_gordondickens_manny_domain_ManifestDetail" items="${manifestdetails}" z="bmqiK/iosvTHVaxDe+ztF6G1KD0=">
-        <table:table data="${manifestdetails}" id="l_com_gordondickens_manny_domain_ManifestDetail" path="/manifestdetails" z="QbYKFLZdTOZJFc/X1mv7rS4qkrU=">
-            <table:column id="c_com_gordondickens_manny_domain_ManifestDetail_name" property="name" z="NUEeFCx2X8hPTwQc+U6Nk4brUu4="/>
-            <table:column id="c_com_gordondickens_manny_domain_ManifestDetail_contents" property="contents" z="ZNoNeqqjswbMGxjSjIcktKftGfU="/>
+    <page:list id="pl_com_gordondickens_manny_domain_ManifestDetail" items="${manifestdetails}">
+        <table:table data="${manifestdetails}" id="l_com_gordondickens_manny_domain_ManifestDetail"
+                     path="/manifestdetails">
+            <table:column id="c_com_gordondickens_manny_domain_ManifestDetail_name" property="name"/>
+            <table:column id="c_com_gordondickens_manny_domain_ManifestDetail_contents" property="contents"/>
         </table:table>
     </page:list>
 </div>

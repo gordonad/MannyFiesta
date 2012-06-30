@@ -369,7 +369,7 @@
                             <groupId>org.apache.maven.plugins</groupId>
                             <artifactId>maven-pmd-plugin</artifactId>
                             <version>${maven.pmd.plugin}</version>
-                            <inherited>true</inherited>
+                            <!--<inherited>true</inherited>-->
                             <configuration>
                                 <rulesets>
                                     <ruleset>/rulesets/basic.xml</ruleset>
@@ -384,13 +384,13 @@
                             <groupId>org.codehaus.mojo</groupId>
                             <artifactId>findbugs-maven-plugin</artifactId>
                             <version>${maven.findbugs.plugin}</version>
-                            <inherited>true</inherited>
+                            <!--<inherited>true</inherited>-->
                         </plugin>
                         <plugin>
                             <groupId>org.codehaus.mojo</groupId>
                             <artifactId>taglist-maven-plugin</artifactId>
                             <version>${maven.taglist.plugin}</version>
-                            <inherited>true</inherited>
+                            <!--<inherited>true</inherited>-->
                         </plugin>
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>

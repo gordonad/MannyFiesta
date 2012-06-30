@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:page="urn:jsptagdir:/WEB-INF/tags/form"
+     xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
-    <page:list id="pl_com_gordondickens_manny_domain_Pkg" items="${pkgs}" z="dLvNXa2nPGMwPH/h45cqz4tuztQ=">
-        <table:table data="${pkgs}" id="l_com_gordondickens_manny_domain_Pkg" path="/pkgs" z="CU2C20Fz5JgEczKKDVm5H5e59zQ=">
-            <table:column id="c_com_gordondickens_manny_domain_Pkg_name" property="name" z="vcThma9SRK6BVcxxFkJAiPSAhWI="/>
-            <table:column id="c_com_gordondickens_manny_domain_Pkg_minVersion" property="minVersion" z="rGf7f0S3la9SUQXzjpxNhGwqeS4="/>
-            <table:column id="c_com_gordondickens_manny_domain_Pkg_maxVersion" property="maxVersion" z="57bZHJIOJ4qdnyS2yFn7Yh6ZTG4="/>
+    <page:list id="pl_com_gordondickens_manny_domain_Pkg" items="${pkgs}">
+        <table:table data="${pkgs}" id="l_com_gordondickens_manny_domain_Pkg" path="/pkgs">
+            <table:column id="c_com_gordondickens_manny_domain_Pkg_name" property="name"/>
+            <table:column id="c_com_gordondickens_manny_domain_Pkg_minVersion" property="minVersion"/>
+            <table:column id="c_com_gordondickens_manny_domain_Pkg_maxVersion" property="maxVersion"/>
         </table:table>
     </page:list>
 </div>

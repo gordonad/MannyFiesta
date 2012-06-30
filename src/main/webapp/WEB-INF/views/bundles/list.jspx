@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:page="urn:jsptagdir:/WEB-INF/tags/form"
+     xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
-    <page:list id="pl_com_gordondickens_manny_domain_Bundle" items="${bundles}" z="WFdIZaLeZjRTrPbtunw4Cu1Lghw=">
-        <table:table data="${bundles}" id="l_com_gordondickens_manny_domain_Bundle" path="/bundles" z="xe5DKXdHAlycu5FLFQg+4G9uBCY=">
-            <table:column id="c_com_gordondickens_manny_domain_Bundle_name" property="name" z="dtlz+z7kKpyPv89JL+Dse0xGs4I="/>
+    <page:list id="pl_com_gordondickens_manny_domain_Bundle" items="${bundles}">
+        <table:table data="${bundles}" id="l_com_gordondickens_manny_domain_Bundle" path="/bundles">
+            <table:column id="c_com_gordondickens_manny_domain_Bundle_name" property="name"/>
         </table:table>
     </page:list>
 </div>

@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields"
+     xmlns:form="urn:jsptagdir:/WEB-INF/tags/form"
+     xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
-    <form:update id="fu_com_gordondickens_manny_domain_Bundle" modelAttribute="bundle" path="/bundles" versionField="Version" z="+eIaSvHiFhGLt1knGUhfsI8Kld8=">
-        <field:input field="name" id="c_com_gordondickens_manny_domain_Bundle_name" min="1" required="true" z="xZbgmWRXCdZIYJMaDB62dAP6dSs="/>
-        <field:simple field="manifestDetails" id="c_com_gordondickens_manny_domain_Bundle_manifestDetails" messageCode="entity_reference_not_managed" messageCodeAttribute="Manifest Detail" z="ZIQK3pF+b1ilgzUbagrn8BN2yHw="/>
-        <field:simple field="importPackages" id="c_com_gordondickens_manny_domain_Bundle_importPackages" messageCode="entity_reference_not_managed" messageCodeAttribute="Pkg" z="HVl3PV7ZqsQxwTlCtoGJgwxeRH8="/>
-        <field:simple field="exportPackages" id="c_com_gordondickens_manny_domain_Bundle_exportPackages" messageCode="entity_reference_not_managed" messageCodeAttribute="Pkg" z="OzurauiIWQ8hxroJajpfCoFq4xU="/>
+    <form:update id="fu_com_gordondickens_manny_domain_Bundle" modelAttribute="bundle" path="/bundles"
+                 versionField="Version">
+        <field:input field="name" id="c_com_gordondickens_manny_domain_Bundle_name" min="1" required="true"/>
+        <field:simple field="manifestDetails" id="c_com_gordondickens_manny_domain_Bundle_manifestDetails"
+                      messageCode="entity_reference_not_managed" messageCodeAttribute="Manifest Detail"/>
+        <field:simple field="importPackages" id="c_com_gordondickens_manny_domain_Bundle_importPackages"
+                      messageCode="entity_reference_not_managed" messageCodeAttribute="Pkg"/>
+        <field:simple field="exportPackages" id="c_com_gordondickens_manny_domain_Bundle_exportPackages"
+                      messageCode="entity_reference_not_managed" messageCodeAttribute="Pkg"/>
     </form:update>
 </div>

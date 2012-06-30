@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
 <tiles-definitions>
     <definition extends="default" name="bundles/list">
         <put-attribute name="body" value="/WEB-INF/views/bundles/list.jspx"/>
     </definition>
-<definition extends="default" name="bundles/show">
+    <definition extends="default" name="bundles/show">
         <put-attribute name="body" value="/WEB-INF/views/bundles/show.jspx"/>
     </definition>
-<definition extends="default" name="bundles/create">
+    <definition extends="default" name="bundles/create">
         <put-attribute name="body" value="/WEB-INF/views/bundles/create.jspx"/>
     </definition>
-<definition extends="default" name="bundles/update">
+    <definition extends="default" name="bundles/update">
         <put-attribute name="body" value="/WEB-INF/views/bundles/update.jspx"/>
     </definition>
 </tiles-definitions>

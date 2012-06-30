@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
 <tiles-definitions>
     <definition extends="default" name="jardirectorys/list">
         <put-attribute name="body" value="/WEB-INF/views/jardirectorys/list.jspx"/>
     </definition>
-<definition extends="default" name="jardirectorys/show">
+    <definition extends="default" name="jardirectorys/show">
         <put-attribute name="body" value="/WEB-INF/views/jardirectorys/show.jspx"/>
     </definition>
-<definition extends="default" name="jardirectorys/create">
+    <definition extends="default" name="jardirectorys/create">
         <put-attribute name="body" value="/WEB-INF/views/jardirectorys/create.jspx"/>
     </definition>
-<definition extends="default" name="jardirectorys/update">
+    <definition extends="default" name="jardirectorys/update">
         <put-attribute name="body" value="/WEB-INF/views/jardirectorys/update.jspx"/>
     </definition>
 </tiles-definitions>
