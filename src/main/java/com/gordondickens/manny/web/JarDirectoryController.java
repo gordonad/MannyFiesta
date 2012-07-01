@@ -21,6 +21,7 @@ import java.io.UnsupportedEncodingException;
 @RequestMapping("/jardirectorys")
 @Controller
 public class JarDirectoryController {
+
     @Autowired
     BundleService bundleService;
     @Autowired
@@ -33,7 +34,8 @@ public class JarDirectoryController {
         }
         try {
             pathSegment = UriUtils.encodePathSegment(pathSegment, enc);
-        } catch (UnsupportedEncodingException uee) {}
+        } catch (UnsupportedEncodingException ignored) {
+        }
         return pathSegment;
     }
 
@@ -42,6 +44,7 @@ public class JarDirectoryController {
         uiModel.addAttribute("bundles", bundleService.findAllBundles());
     }
 
+    // DELETE
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
     public String delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         JarDirectory jarDirectory = jarDirectoryService.findJarDirectory(id);
@@ -52,12 +55,14 @@ public class JarDirectoryController {
         return "redirect:/jardirectorys";
     }
 
+    // UPDATE - FORM PAGE
     @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
     public String updateForm(@PathVariable("id") Long id, Model uiModel) {
         populateEditForm(uiModel, jarDirectoryService.findJarDirectory(id));
         return "jardirectorys/update";
     }
 
+    // UPDATE
     @RequestMapping(method = RequestMethod.PUT, produces = "text/html")
     public String update(@Valid JarDirectory jarDirectory, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
         if (bindingResult.hasErrors()) {
@@ -69,11 +74,13 @@ public class JarDirectoryController {
         return "redirect:/jardirectorys/" + encodeUrlPathSegment(jarDirectory.getId().toString(), httpServletRequest);
     }
 
+
+    // LIST
     @RequestMapping(produces = "text/html")
     public String list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         if (page != null || size != null) {
-            int sizeNo = size == null ? 10 : size.intValue();
-            final int firstResult = page == null ? 0 : (page.intValue() - 1) * sizeNo;
+            int sizeNo = size == null ? 10 : size;
+            final int firstResult = page == null ? 0 : (page - 1) * sizeNo;
             uiModel.addAttribute("jardirectorys", jarDirectoryService.findJarDirectoryEntries(firstResult, sizeNo));
             float nrOfPages = (float) jarDirectoryService.countAllJarDirectorys() / sizeNo;
             uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
@@ -83,6 +90,7 @@ public class JarDirectoryController {
         return "jardirectorys/list";
     }
 
+    // SHOW
     @RequestMapping(value = "/{id}", produces = "text/html")
     public String show(@PathVariable("id") Long id, Model uiModel) {
         uiModel.addAttribute("jardirectory", jarDirectoryService.findJarDirectory(id));
@@ -90,12 +98,14 @@ public class JarDirectoryController {
         return "jardirectorys/show";
     }
 
+    // CREATE FORM
     @RequestMapping(params = "form", produces = "text/html")
     public String createForm(Model uiModel) {
         populateEditForm(uiModel, new JarDirectory());
         return "jardirectorys/create";
     }
 
+    // CREATE NEW
     @RequestMapping(method = RequestMethod.POST, produces = "text/html")
     public String create(@Valid JarDirectory jarDirectory, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
         if (bindingResult.hasErrors()) {

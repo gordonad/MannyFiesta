@@ -8,6 +8,18 @@
     <!-- To enable JMX Management -->
     <jmxConfigurator/>
 
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${user.dir}/logs/manny.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${user.dir}/logs/manny.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%.-1level|%-40.40logger{0}|%msg%n</pattern>
+        </encoder>
+    </appender>
+
+
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>%.-1level|%-40.40logger{0}|%msg%n</pattern>
@@ -16,13 +28,12 @@
 
     <logger name="com.gordondickens.manny" level="debug" />
 	<logger name="org.springframework" level="warn" />
-
-	<logger name="org.springframework.beans" level="debug" />
-	<!--<logger name="org.springframework.transaction" level="warn" />-->
+	<logger name="org.springframework.transaction" level="trace" />
 	<!--<logger name="org.springframework.orm" level="warn" />-->
 	<!--<logger name="org.springframework.dao" level="debug" />-->
 
 	<root level="warn">
 		<appender-ref ref="console" />
+		<appender-ref ref="file" />
 	</root>
 </configuration>

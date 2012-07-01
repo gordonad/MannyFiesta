@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 @Transactional
 public interface JarDirectoryService {
-    public abstract void scan(String fileOrDirectory);
+    public abstract void scan(JarDirectory fileOrDirectory);
 
     public abstract long countAllJarDirectorys();
 

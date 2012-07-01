@@ -1,0 +1,10 @@
+drop table jar_file_export_packages;
+drop table jar_file_import_packages;
+drop table jar_file_manifest_details;
+drop table jar_file;
+drop table jar_directory_jar_files;
+drop table jar_directory;
+drop table manifest_detail;
+drop table pkg;
+drop table bundle;
+drop table jar_directory;

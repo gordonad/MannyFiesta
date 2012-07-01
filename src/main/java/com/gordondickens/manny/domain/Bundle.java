@@ -5,14 +5,14 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 public class Bundle {
 
-    @Size(min = 1)
+    @NotNull
+    @Column(length = 255)
     private String name;
 
     @NotNull
@@ -56,6 +56,13 @@ public class Bundle {
         this.exportPackages = exportPackages;
     }
 
+    public void addExportPackage(Pkg exportPackage) {
+        if (this.exportPackages == null) {
+            this.exportPackages = new HashSet<Pkg>();
+        }
+        this.exportPackages.add(exportPackage);
+    }
+
     public Set<Pkg> getExportPackages() {
         return this.exportPackages;
     }
@@ -64,12 +71,26 @@ public class Bundle {
         this.importPackages = importPackages;
     }
 
+    public void addImportPackage(Pkg importPackage) {
+        if (this.importPackages == null) {
+            this.importPackages = new HashSet<Pkg>();
+        }
+        this.importPackages.add(importPackage);
+    }
+
     public Set<Pkg> getImportPackages() {
         return this.importPackages;
     }
 
     public void setManifestDetails(Set<ManifestDetail> manifestDetails) {
         this.manifestDetails = manifestDetails;
+    }
+
+    public void addManifestDetail(ManifestDetail manifestDetail) {
+        if (this.manifestDetails == null) {
+            this.manifestDetails = new HashSet<ManifestDetail>();
+        }
+        this.manifestDetails.add(manifestDetail);
     }
 
     public Set<ManifestDetail> getManifestDetails() {

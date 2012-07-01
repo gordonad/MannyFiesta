@@ -5,19 +5,19 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 public class JarDirectory {
 
-    @Size(min = 1)
+    @NotNull
+    @Column(length = 255)
     private String name;
 
     @NotNull
     @OneToMany(cascade = CascadeType.ALL)
-    private Set<Bundle> Bundles = new HashSet<Bundle>();
+    private Set<Bundle> bundles = new HashSet<Bundle>();
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
@@ -51,11 +51,18 @@ public class JarDirectory {
     }
 
     public Set<Bundle> getBundles() {
-        return this.Bundles;
+        return this.bundles;
     }
 
     public void setBundles(Set<Bundle> Bundles) {
-        this.Bundles = Bundles;
+        this.bundles = Bundles;
+    }
+
+    public void addBundle(Bundle bundle) {
+        if (this.getBundles() == null) {
+            this.bundles = new HashSet<Bundle>();
+        }
+        this.bundles.add(bundle);
     }
 
     public String toString() {

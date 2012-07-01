@@ -1,6 +1,5 @@
 package com.gordondickens.manny.service;
 
-import com.gordondickens.manny.service.internal.JarDirectoryServiceImpl;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,29 +14,30 @@ public class JarDirectoryServiceTests {
 
     @Test
     public void jarFileScan() {
-        //TODO Add project specific path to make this a system independent unit test
-        JarDirectoryService jarDirectoryService = new JarDirectoryServiceImpl();
-        jarDirectoryService.scan("/opt/virgo-jetty-server-3.5.0.M04/repository/ext");
-//        jarDirectoryService.scan();
+        //TODO
     }
 
     @Test
     public void directoryFileScan() {
-
+        //TODO Add project specific path to make this a system independent unit test
+//        JarDirectoryService jarDirectoryService = new JarDirectoryServiceImpl();
+//        JarDirectory jarDirectory = new JarDirectory();
+//        jarDirectory.setName("/opt/virgo-jetty-server-3.5.0.M04/repository/ext");
+//        jarDirectoryService.scan(jarDirectory);
     }
 
     @Test
     public void nonExistentFileOrDirectoryScan() {
-
+        // TODO
     }
 
     @Test
     public void noJarsFoundScan() {
-
+        //TODO
     }
 
     @Test
     public void jarWithoutManifestScan() {
-
+        //TODO
     }
 }

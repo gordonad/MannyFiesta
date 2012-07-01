@@ -4,12 +4,13 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Pkg {
 
-    @Size(min = 11, max = 25)
+    @NotNull
+    @Column(length = 255)
     private String name;
 
     private String minVersion;

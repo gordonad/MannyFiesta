@@ -15,12 +15,44 @@
     </appender>
 
 	<logger name="com.gordondickens.manny" level="debug" />
-	<logger name="org.springframework" level="warn" />
 
-	<logger name="org.springframework.beans" level="debug" />
-	<!--<logger name="org.springframework.transaction" level="warn" />-->
-	<!--<logger name="org.springframework.orm" level="warn" />-->
-	<!--<logger name="org.springframework.dao" level="debug" />-->
+	<logger name="org.springframework.transaction" level="trace" />
+
+    <!-- ### Spring JDBC ### -->
+    <logger name="org.springframework.jdbc" level="warn"/>
+
+    <!-- ### Spring TRANSACTION ### -->
+    <logger name="org.springframework.transaction" level="info"/>
+
+    <!-- ### Spring ORM logging ### -->
+    <logger name="org.springframework.orm" level="debug"/>
+
+    <!-- ### Spring HIBERNATE ### -->
+    <logger name="org.springframework.orm.hibernate" level="warn"/>
+
+    <!-- ### Spring JPA ### -->
+    <logger name="org.springframework.orm.jpa" level="warn"/>
+
+    <!-- ### All Hibernate ### -->
+    <logger name="org.hibernate" level="info"/>
+
+    <!-- ### SQL Fragmnts & Stmnts ### -->
+    <logger name="org.hibernate.sql" level="trace"/>
+
+    <!-- ### Map Java-JDBC types ### -->
+    <logger name="org.hibernate.type" level="warn"/>
+
+    <!-- ### Schema Gen and DDL ### -->
+    <logger name="org.hibernate.tool.hbm2ddl" level="warn"/>
+
+    <!-- ### 2nd Lvl Query Caching ### -->
+    <logger name="org.hibernate.cache" level="warn"/>
+
+    <!-- ### EH Caching ### -->
+    <logger name="net.sf.ehcache" level="debug"/>
+
+    <!-- ### Hibernate EJB Caching ### -->
+    <logger name="org.hibernate.ejb" level="debug"/>
 
 	<root level="warn">
 		<appender-ref ref="console" />
