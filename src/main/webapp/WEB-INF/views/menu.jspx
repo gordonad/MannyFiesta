@@ -6,23 +6,20 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <menu:menu id="_menu">
-        <menu:category id="c_bundle">
-            <menu:item id="i_bundle_new" messageCode="global_menu_new" url="/bundles?form"/>
-            <menu:item id="i_bundle_list" messageCode="global_menu_list"
-                       url="/bundles?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
-        </menu:category>
-        <menu:category id="c_manifestdetail">
-            <menu:item id="i_manifestdetail_new" messageCode="global_menu_new" url="/manifestdetails?form"/>
-            <menu:item id="i_manifestdetail_list" messageCode="global_menu_list"
-                       url="/manifestdetails?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
-        </menu:category>
         <menu:category id="c_jardirectory">
             <menu:item id="i_jardirectory_new" messageCode="global_menu_new" url="/jardirectorys?form"/>
             <menu:item id="i_jardirectory_list" messageCode="global_menu_list"
                        url="/jardirectorys?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
         </menu:category>
+        <menu:category id="c_bundle">
+            <menu:item id="i_bundle_list" messageCode="global_menu_list"
+                       url="/bundles?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
+        </menu:category>
+        <menu:category id="c_manifestdetail">
+            <menu:item id="i_manifestdetail_list" messageCode="global_menu_list"
+                       url="/manifestdetails?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
+        </menu:category>
         <menu:category id="c_pkg">
-            <menu:item id="i_pkg_new" messageCode="global_menu_new" url="/pkgs?form"/>
             <menu:item id="i_pkg_list" messageCode="global_menu_list"
                        url="/pkgs?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
         </menu:category>

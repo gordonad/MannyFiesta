@@ -602,6 +602,12 @@
                         <version>${logback.version}</version>
                         <scope>runtime</scope>
                     </dependency>
+                    <!--<dependency>-->
+                        <!--<groupId>elvyx</groupId>-->
+                        <!--<artifactId>elvyx</artifactId>-->
+                        <!--<version>1.0.24</version>-->
+                        <!--<scope>runtime</scope>-->
+                    <!--</dependency>-->
                 </dependencies>
             </plugin>
             <plugin>
@@ -701,6 +707,13 @@
                         </configuration>
                     </execution>
                 </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>commons-lang</groupId>
+                        <artifactId>commons-lang</artifactId>
+                        <version>${commons.lang2.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>

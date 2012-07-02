@@ -29,8 +29,10 @@
     <logger name="com.gordondickens.manny" level="debug" />
 	<logger name="org.springframework" level="warn" />
 	<logger name="org.springframework.transaction" level="trace" />
-	<!--<logger name="org.springframework.orm" level="warn" />-->
-	<!--<logger name="org.springframework.dao" level="debug" />-->
+
+    <!-- ### Schema Gen and DDL ### -->
+    <logger name="org.hibernate.tool.hbm2ddl" level="debug"/>
+
 
 	<root level="warn">
 		<appender-ref ref="console" />

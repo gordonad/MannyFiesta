@@ -24,33 +24,6 @@ public class Bundle {
 
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Pkg> exportPackages = new HashSet<Pkg>();
-    @Version
-    @Column(name = "version")
-    private Integer version;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Long id;
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return this.id;
-    }
-
-    public Integer getVersion() {
-        return this.version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
-
-    public String toString() {
-        return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);
-    }
 
     public void setExportPackages(Set<Pkg> exportPackages) {
         this.exportPackages = exportPackages;
@@ -104,4 +77,35 @@ public class Bundle {
     public String getName() {
         return this.name;
     }
+
+
+    @Version
+    @Column(name = "version")
+    private Integer version;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private Long id;
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public Integer getVersion() {
+        return this.version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
+    }
+
+    @Override
+    public String toString() {
+        return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);
+    }
+
 }

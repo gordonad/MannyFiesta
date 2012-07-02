@@ -4,19 +4,20 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 
 @Entity
 public class ManifestDetail {
 
-    @Size(min = 11, max = 25)
+    @Column(length = 255)
     private String name;
 
-    @Size(min = 11, max = 25)
+    @Column(length = 2048)
     private String contents;
+
     @Version
     @Column(name = "version")
     private Integer version;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
@@ -38,6 +39,8 @@ public class ManifestDetail {
         return this.name;
     }
 
+
+    @Override
     public String toString() {
         return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);
     }

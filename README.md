@@ -1,33 +1,38 @@
 Manny Fiesta
 ============
 
-A tool for scanning jar manifests
+A tool for scanning jar manifests & detail reporting.
 
-Goal:
+Goal
+----
 Provide details on the manifests for cross referencing OSGi configuration and dependencies.
 
 
-// TODO - Create the BundleRegistry
-// TODO - Create Page for uploading jars and jar paths
-// TODO - After Jars have been selected - click "Analyze"
-// TODO - Code the export-packages registry
-// TODO - Compare import-packages to export-registry including version-range
-// TODO - Compare the Host-Bundle to export-registry
-// TODO - Compare the Import-Bundle to Bundles
-// TODO - Compare the Requires-Bundle to Bundles
-// TODO - Compare the "uses" directive to export-registry
+Mon: 02-Jul-12
+--------------
+Initial path scanning working and loading details in the database.
 
 
+TODO
+----
+ - After Jars have been selected - click "Analyze"
+ - Compare the Host-Bundle to export-registry
+ - Compare the Import-Bundle to Bundles
+ - Compare the Requires-Bundle to Bundles
+ - Compare the "uses" directive to export-registry
 
 
-Misc
+Notes
 -----
+* Uses Eclipse Virgo bundle utilities for parsing manifest details
+* Elvyx - configuration is included - NOT working yet.
 
 
+MYSQL/MariaDB Setup
+-------------------
 
-MYSQL
------
-CREATE DATABASE manny;
-GRANT ALL PRIVILEGES ON manny.* TO manny@localhost IDENTIFIED BY 'password' WITH GRANT OPTION;
-GRANT ALL PRIVILEGES ON manny.* TO manny@127.0.0.1 IDENTIFIED BY 'password' WITH GRANT OPTION;
-FLUSH PRIVILEGES;
+$ mysql -u root -p
+mysql> CREATE DATABASE manny;
+mysql> GRANT ALL PRIVILEGES ON manny.* TO manny@localhost IDENTIFIED BY 'password' WITH GRANT OPTION;
+mysql> GRANT ALL PRIVILEGES ON manny.* TO manny@127.0.0.1 IDENTIFIED BY 'password' WITH GRANT OPTION;
+mysql> FLUSH PRIVILEGES;

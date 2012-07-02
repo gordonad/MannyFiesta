@@ -16,29 +16,16 @@ public class Pkg {
     private String minVersion;
 
     private String maxVersion;
+
     @Version
     @Column(name = "version")
     private Integer version;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
 
-    public Long getId() {
-        return this.id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Integer getVersion() {
-        return this.version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
 
     public void setMaxVersion(String maxVersion) {
         this.maxVersion = maxVersion;
@@ -64,6 +51,24 @@ public class Pkg {
         return this.name;
     }
 
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Integer getVersion() {
+        return this.version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
+    }
+
+    @Override
     public String toString() {
         return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);
     }
