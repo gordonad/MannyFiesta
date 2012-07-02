@@ -8,9 +8,19 @@ Goal
 Provide details on the manifests for cross referencing OSGi configuration and dependencies.
 
 
+
+Run
+---
+- _mvn clean install jetty:run_
+  - OR
+- _mvn clean install tomcat7:run_
+
+
+
 Mon: 02-Jul-12
 --------------
-Initial path scanning working and loading details in the database.
+- Initial path scanning working and loading details in the database.
+
 
 
 TODO
@@ -22,17 +32,26 @@ TODO
  - Compare the "uses" directive to export-registry
 
 
+
 Notes
 -----
-* Uses Eclipse Virgo bundle utilities for parsing manifest details
-* Elvyx - configuration is included - NOT working yet.
+- Eclipse Virgo bundle utilities used for parsing manifest details
+- JMX
+  - JMX is enabled in Maven Jetty & Tomcat plugins
+  - Spring JMX configuration is enabled
+- Elvyx
+  - configuration is included - NOT working!
+
 
 
 MYSQL/MariaDB Setup
 -------------------
+- $
+  - _mysql -u root -p_
+- mysql>
+  - _CREATE DATABASE manny;_
+  - _GRANT ALL PRIVILEGES ON manny.* TO manny@localhost IDENTIFIED BY 'password' WITH GRANT OPTION;_
+  - _GRANT ALL PRIVILEGES ON manny.* TO manny@127.0.0.1 IDENTIFIED BY 'password' WITH GRANT OPTION;_
+  - _FLUSH PRIVILEGES;_
 
-$ mysql -u root -p
-mysql> CREATE DATABASE manny;
-mysql> GRANT ALL PRIVILEGES ON manny.* TO manny@localhost IDENTIFIED BY 'password' WITH GRANT OPTION;
-mysql> GRANT ALL PRIVILEGES ON manny.* TO manny@127.0.0.1 IDENTIFIED BY 'password' WITH GRANT OPTION;
-mysql> FLUSH PRIVILEGES;
+

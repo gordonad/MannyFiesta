@@ -4,11 +4,29 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
            http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>com.gordondickens.manny</groupId>
     <artifactId>MannyFiesta</artifactId>
+    <version>1.0.2</version>
+
     <packaging>war</packaging>
-    <version>1.0.0</version>
+
     <name>MannyFiesta</name>
+
+    <developers>
+        <developer>
+            <id>gordon.dickens</id>
+            <name>Gordon Dickens</name>
+            <email>gordondickens@gmail.com</email>
+            <roles>
+                <role>Author</role>
+            </roles>
+            <organization>http://www.gordondickens.com</organization>
+        </developer>
+    </developers>
+
+    <description>OSGi Bundle Analysis Tool - Web Application</description>
+
 
     <properties>
         <skipTests>true</skipTests>
@@ -528,6 +546,16 @@
                         <artifactId>logback-access</artifactId>
                         <version>${logback.version}</version>
                         <scope>runtime</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>ch.qos.logback</groupId>
+                        <artifactId>logback-core</artifactId>
+                        <version>${logback.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>commons-codec</groupId>
+                        <artifactId>commons-codec</artifactId>
+                        <version>${commons.codec.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -1306,6 +1334,11 @@
             <dependency>
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-core</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-parent</artifactId>
                 <version>${logback.version}</version>
             </dependency>
             <dependency>

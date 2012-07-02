@@ -3,6 +3,7 @@ package com.gordondickens.manny.web;
 import com.gordondickens.manny.domain.ManifestDetail;
 import com.gordondickens.manny.service.ManifestDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,6 +24,9 @@ public class ManifestDetailController {
     @Autowired
     ManifestDetailService manifestDetailService;
 
+    @Value("${pagination_records_per_page}")
+    String maxRecordsPerPage = "10";
+
     String encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
         String enc = httpServletRequest.getCharacterEncoding();
         if (enc == null) {
@@ -30,7 +34,7 @@ public class ManifestDetailController {
         }
         try {
             pathSegment = UriUtils.encodePathSegment(pathSegment, enc);
-        } catch (UnsupportedEncodingException uee) {
+        } catch (UnsupportedEncodingException ignored) {
         }
         return pathSegment;
     }
@@ -45,7 +49,7 @@ public class ManifestDetailController {
         manifestDetailService.deleteManifestDetail(manifestDetail);
         uiModel.asMap().clear();
         uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
-        uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
+        uiModel.addAttribute("size", (size == null) ? maxRecordsPerPage : size.toString());
         return "redirect:/manifestdetails";
     }
 
@@ -69,8 +73,8 @@ public class ManifestDetailController {
     @RequestMapping(produces = "text/html")
     public String list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         if (page != null || size != null) {
-            int sizeNo = size == null ? 10 : size.intValue();
-            final int firstResult = page == null ? 0 : (page.intValue() - 1) * sizeNo;
+            int sizeNo = size == null ? Integer.parseInt(maxRecordsPerPage) : size;
+            final int firstResult = page == null ? 0 : (page - 1) * sizeNo;
             uiModel.addAttribute("manifestdetails", manifestDetailService.findManifestDetailEntries(firstResult, sizeNo));
             float nrOfPages = (float) manifestDetailService.countAllManifestDetails() / sizeNo;
             uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));

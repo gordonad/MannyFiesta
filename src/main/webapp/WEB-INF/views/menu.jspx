@@ -14,12 +14,8 @@
         <menu:category id="c_bundle">
             <menu:item id="i_bundle_list" messageCode="global_menu_list"
                        url="/bundles?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
-        </menu:category>
-        <menu:category id="c_manifestdetail">
             <menu:item id="i_manifestdetail_list" messageCode="global_menu_list"
                        url="/manifestdetails?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
-        </menu:category>
-        <menu:category id="c_pkg">
             <menu:item id="i_pkg_list" messageCode="global_menu_list"
                        url="/pkgs?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
         </menu:category>

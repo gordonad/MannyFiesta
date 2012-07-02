@@ -4,6 +4,7 @@ import com.gordondickens.manny.domain.JarDirectory;
 import com.gordondickens.manny.service.BundleService;
 import com.gordondickens.manny.service.JarDirectoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,8 +25,12 @@ public class JarDirectoryController {
 
     @Autowired
     BundleService bundleService;
+
     @Autowired
     JarDirectoryService jarDirectoryService;
+
+    @Value("${pagination_records_per_page}")
+    String maxRecordsPerPage = "10";
 
     String encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
         String enc = httpServletRequest.getCharacterEncoding();
@@ -51,7 +56,7 @@ public class JarDirectoryController {
         jarDirectoryService.deleteJarDirectory(jarDirectory);
         uiModel.asMap().clear();
         uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
-        uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
+        uiModel.addAttribute("size", (size == null) ? maxRecordsPerPage : size.toString());
         return "redirect:/jardirectorys";
     }
 
@@ -79,7 +84,7 @@ public class JarDirectoryController {
     @RequestMapping(produces = "text/html")
     public String list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         if (page != null || size != null) {
-            int sizeNo = size == null ? 10 : size;
+            int sizeNo = size == null ? Integer.parseInt(maxRecordsPerPage) : size;
             final int firstResult = page == null ? 0 : (page - 1) * sizeNo;
             uiModel.addAttribute("jardirectorys", jarDirectoryService.findJarDirectoryEntries(firstResult, sizeNo));
             float nrOfPages = (float) jarDirectoryService.countAllJarDirectorys() / sizeNo;

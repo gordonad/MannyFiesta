@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -27,6 +28,17 @@ public class JarDirectoryServiceIT {
     @Autowired
     JarDirectoryService jarDirectoryService;
 
+    @Value("${pagination_records_per_page}")
+    Integer maxRecordsPerPage = 10;
+
+    @Test
+    public void checkRecordsPerPageSetFromProperties() {
+        assertNotNull("Records Per Page MUST exist", maxRecordsPerPage);
+        logger.debug("Records per page = '{}'", maxRecordsPerPage);
+        assertTrue("Records Per Page Must be greater than 10", maxRecordsPerPage > 10);
+    }
+
+
     @Test
     public void directoryFileScan() {
         JarDirectory jarDirectory = new JarDirectory();
@@ -37,7 +49,7 @@ public class JarDirectoryServiceIT {
 
         assertNotNull(jarDirectory.getId());
         assertNotNull(jarDirectory.getBundles());
-        assertTrue(jarDirectory.getBundles().size() >0);
+        assertTrue(jarDirectory.getBundles().size() > 0);
     }
 
     @Ignore("TODO")
