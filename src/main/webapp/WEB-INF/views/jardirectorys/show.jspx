@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields"
      xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jstl/core_rt"
+     xmlns:spring="http://www.springframework.org/tags"
+     xmlns:fn="http://java.sun.com/jsp/jstl/functions"
      xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
 
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
@@ -8,4 +11,36 @@
     <page:show id="ps_com_gordondickens_manny_domain_JarDirectory" object="${jardirectory}" path="/jardirectorys">
         <field:display field="name" id="s_com_gordondickens_manny_domain_JarDirectory_name" object="${jardirectory}"/>
     </page:show>
+
+
+    <hr/>
+    <c:if test="${not empty bundles}">
+        <h3>Bundles</h3>
+        <table style="table-layout:fixed;width:100%;">
+            <c:set var="show_label" value="com_gordondickens_manny_domain_Bundle_name"/>
+            <c:forEach var="bundle" items="${bundles}">
+                <spring:url value="/bundles/${bundle.id}" var="show_form_url"/>
+                <spring:url value="/resources/images/show.png" var="show_image_url"/>
+                <tr>
+                    <td style="width:95%">
+                        <div style="word-wrap:break-word;">
+                            <a href="${show_form_url}" alt="${fn:escapeXml(show_label)}"
+                               title="${fn:escapeXml(show_label)}">${bundle.name}</a>
+                        </div>
+                    </td>
+                    <td style="width:5%">
+                        <div style="word-wrap:break-word;">
+                            <spring:message arguments="bundles" code="entity_show" var="show_label" htmlEscape="false"/>
+                            <a href="${show_form_url}" alt="${fn:escapeXml(show_label)}"
+                               title="${fn:escapeXml(show_label)}">
+                                <img alt="${fn:escapeXml(show_label)}" class="image" src="${show_image_url}"
+                                     title="${fn:escapeXml(show_label)}"/>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            </c:forEach>
+        </table>
+    </c:if>
+
 </div>

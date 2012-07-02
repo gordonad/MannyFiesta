@@ -2,6 +2,8 @@ package com.gordondickens.manny.service.internal;
 
 
 import com.gordondickens.manny.domain.Bundle;
+import com.gordondickens.manny.domain.ManifestDetail;
+import com.gordondickens.manny.domain.Pkg;
 import com.gordondickens.manny.repository.BundleRepository;
 import com.gordondickens.manny.service.BundleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,5 +51,20 @@ public class BundleServiceImpl implements BundleService {
     @Override
     public Bundle updateBundle(Bundle bundle) {
         return bundleRepository.save(bundle);
+    }
+
+    @Override
+    public List<Pkg> findImportedPackages(Long bundleId) {
+        return bundleRepository.findImportedPackages(bundleId);
+    }
+
+    @Override
+    public List<Pkg> findExportedPackages(Long bundleId) {
+        return bundleRepository.findExportedPackages(bundleId);
+    }
+
+    @Override
+    public List<ManifestDetail> findManifestDetails(Long bundleId) {
+        return bundleRepository.findManifestDetails(bundleId);
     }
 }

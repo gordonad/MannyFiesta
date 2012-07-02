@@ -1,47 +1,44 @@
 package com.gordondickens.manny.service.integration;
 
+import com.gordondickens.manny.domain.Bundle;
 import com.gordondickens.manny.domain.JarDirectory;
+import com.gordondickens.manny.domain.Pkg;
+import com.gordondickens.manny.service.BundleService;
 import com.gordondickens.manny.service.JarDirectoryService;
-import org.junit.Ignore;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+
 /**
  * User: gordon
- * Date: 6/29/12
- * Time: 3:16 PM
+ * Date: 7/2/12
+ * Time: 5:32 PM
  */
 @Transactional
 @ContextConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
-public class JarDirectoryServiceIT {
-    private static final Logger logger = LoggerFactory.getLogger(JarDirectoryServiceIT.class);
+public class BundleServiceIT {
+    private static final Logger logger = LoggerFactory.getLogger(BundleServiceIT.class);
+
+    @Autowired
+    BundleService bundleService;
 
     @Autowired
     JarDirectoryService jarDirectoryService;
 
-    @Value("${pagination_records_per_page}")
-    Integer maxRecordsPerPage = 10;
-
-    @Test
-    public void checkRecordsPerPageSetFromProperties() {
-        assertNotNull("Records Per Page MUST exist", maxRecordsPerPage);
-        logger.debug("Records per page = '{}'", maxRecordsPerPage);
-        assertTrue("Records Per Page Must be greater than 10", maxRecordsPerPage > 10);
-    }
-
-
-    @Test
+    @Before
     public void directoryFileScan() {
         JarDirectory jarDirectory = new JarDirectory();
         jarDirectory.setName("/opt/virgo-jetty-server-3.5.0.M04/repository/ext");
@@ -54,27 +51,25 @@ public class JarDirectoryServiceIT {
         assertTrue(jarDirectory.getBundles().size() > 0);
     }
 
-    @Ignore("TODO")
     @Test
-    public void jarFileScan() {
-        //TODO
+    public void findExportedPackages() {
+        Bundle bundle = bundleService.findBundle(1L);
+        assertNotNull("One Bundle MUST Exist", bundle);
+
+        List<Pkg> exportedPackages = bundleService.findExportedPackages(1L);
+        assertNotNull("Exported Packages MUST exist", exportedPackages);
+        assertTrue("At least 1 exported package must exist", exportedPackages.size() > 0);
     }
 
-    @Ignore("TODO")
     @Test
-    public void nonExistentFileOrDirectoryScan() {
-        // TODO
+    public void findImportedPackages() {
+        Bundle bundle = bundleService.findBundle(1L);
+        assertNotNull("One Bundle MUST Exist", bundle);
+
+        List<Pkg> importedPackages = bundleService.findImportedPackages(1L);
+        assertNotNull("Exported Packages MUST exist", importedPackages);
+        assertTrue("At least 1 exported package must exist", importedPackages.size() > 0);
     }
 
-    @Ignore("TODO")
-    @Test
-    public void noJarsFoundScan() {
-        //TODO
-    }
 
-    @Ignore("TODO")
-    @Test
-    public void jarWithoutManifestScan() {
-        //TODO
-    }
 }

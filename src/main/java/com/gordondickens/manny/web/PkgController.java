@@ -25,7 +25,7 @@ public class PkgController {
     PkgService pkgService;
 
     @Value("${pagination_records_per_page}")
-    String maxRecordsPerPage = "10";
+    String maxRecordsPerPage = "25";
 
     String encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
         String enc = httpServletRequest.getCharacterEncoding();

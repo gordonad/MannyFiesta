@@ -7,11 +7,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional
+@Transactional(readOnly = true)
 public interface PkgService {
     public abstract long countAllPkgs();
-
-    public abstract void deletePkg(Pkg pkg);
 
     public abstract Pkg findPkg(Long id);
 
@@ -19,8 +17,12 @@ public interface PkgService {
 
     public abstract List<Pkg> findPkgEntries(int firstResult, int maxResults);
 
+    @Transactional(readOnly = false)
+    public abstract void deletePkg(Pkg pkg);
+
+    @Transactional(readOnly = false)
     public abstract void savePkg(Pkg pkg);
 
+    @Transactional(readOnly = false)
     public abstract Pkg updatePkg(Pkg pkg);
-
 }

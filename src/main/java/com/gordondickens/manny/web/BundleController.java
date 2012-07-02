@@ -33,7 +33,7 @@ public class BundleController {
     BundleService bundleService;
 
     @Value("${pagination_records_per_page}")
-    String maxRecordsPerPage = "10";
+    String maxRecordsPerPage = "25";
 
     String encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
         String enc = httpServletRequest.getCharacterEncoding();
@@ -94,10 +94,14 @@ public class BundleController {
         return "bundles/list";
     }
 
+
     @RequestMapping(value = "/{id}", produces = "text/html")
     public String show(@PathVariable("id") Long id, Model uiModel) {
         uiModel.addAttribute("bundle", bundleService.findBundle(id));
         uiModel.addAttribute("itemId", id);
+        uiModel.addAttribute("importedPackages", bundleService.findImportedPackages(id));
+        uiModel.addAttribute("exportedPackages", bundleService.findExportedPackages(id));
+        uiModel.addAttribute("manifestDetails", bundleService.findManifestDetails(id));
         return "bundles/show";
     }
 

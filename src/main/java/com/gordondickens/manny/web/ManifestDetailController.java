@@ -25,7 +25,7 @@ public class ManifestDetailController {
     ManifestDetailService manifestDetailService;
 
     @Value("${pagination_records_per_page}")
-    String maxRecordsPerPage = "10";
+    String maxRecordsPerPage = "25";
 
     String encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
         String enc = httpServletRequest.getCharacterEncoding();

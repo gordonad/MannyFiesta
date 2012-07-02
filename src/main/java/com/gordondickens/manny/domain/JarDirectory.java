@@ -19,7 +19,6 @@ public class JarDirectory {
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Bundle> bundles = new HashSet<Bundle>();
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")

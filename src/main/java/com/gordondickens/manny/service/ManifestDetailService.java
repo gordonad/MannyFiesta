@@ -7,11 +7,10 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional
+@Transactional(readOnly = true)
 public interface ManifestDetailService {
-    public abstract long countAllManifestDetails();
 
-    public abstract void deleteManifestDetail(ManifestDetail manifestDetail);
+    public abstract long countAllManifestDetails();
 
     public abstract ManifestDetail findManifestDetail(Long id);
 
@@ -19,7 +18,12 @@ public interface ManifestDetailService {
 
     public abstract List<ManifestDetail> findManifestDetailEntries(int firstResult, int maxResults);
 
+    @Transactional(readOnly = false)
+    public abstract void deleteManifestDetail(ManifestDetail manifestDetail);
+
+    @Transactional(readOnly = false)
     public abstract void saveManifestDetail(ManifestDetail manifestDetail);
 
+    @Transactional(readOnly = false)
     public abstract ManifestDetail updateManifestDetail(ManifestDetail manifestDetail);
 }

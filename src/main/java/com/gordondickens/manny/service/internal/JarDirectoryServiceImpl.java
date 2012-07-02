@@ -231,4 +231,10 @@ public class JarDirectoryServiceImpl implements JarDirectoryService {
     public JarDirectory updateJarDirectory(JarDirectory jarDirectory) {
         return jarDirectoryRepository.save(jarDirectory);
     }
+
+    @Override
+    public List<Bundle> findBundles(Long jarDirectoryId){
+        return jarDirectoryRepository.findBundles(jarDirectoryId);
+    }
+
 }

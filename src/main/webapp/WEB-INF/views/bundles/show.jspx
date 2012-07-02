@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields"
      xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jstl/core_rt"
+     xmlns:spring="http://www.springframework.org/tags"
+     xmlns:fn="http://java.sun.com/jsp/jstl/functions"
      xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
 
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
@@ -8,4 +11,71 @@
     <page:show id="ps_com_gordondickens_manny_domain_Bundle" object="${bundle}" path="/bundles">
         <field:display field="name" id="s_com_gordondickens_manny_domain_Bundle_name" object="${bundle}"/>
     </page:show>
+
+    <c:if test="${not empty importedPackages}">
+        <h3>Imported Packages</h3>
+        <c:set var="show_label" value="com_gordondickens_manny_domain_Bundle_name"/>
+        <table style="table-layout:fixed;width:100%;">
+            <c:forEach var="package" items="${importedPackages}">
+                <spring:url value="/bundles/${package.id}" var="show_form_url"/>
+                <spring:url value="/resources/images/show.png" var="show_image_url"/>
+                <tr>
+                    <td style="width:60%">
+                        <div style="word-wrap:break-word;">
+                            <a href="${show_form_url}" alt="${fn:escapeXml(show_label)}"
+                               title="${fn:escapeXml(show_label)}">${package.name}</a>
+                        </div>
+                    </td>
+                    <td style="width:20%">
+                        <div style="word-wrap:break-word;">${package.minVersion}</div>
+                    </td>
+                    <td style="width:20%">
+                        <div style="word-wrap:break-word;">${package.maxVersion}</div>
+                    </td>
+                </tr>
+            </c:forEach>
+        </table>
+    </c:if>
+    <hr/>
+    <c:if test="${not empty exportedPackages}">
+        <h3>Exported Packages</h3>
+        <table style="table-layout:fixed;width:100%;">
+            <c:forEach var="package" items="${exportedPackages}">
+                <tr>
+                    <td style="width:60%">
+                        <div style="word-wrap:break-word;">
+                            <a href="${show_form_url}" alt="${fn:escapeXml(show_label)}"
+                               title="${fn:escapeXml(show_label)}">${package.name}</a>
+                        </div>
+                    </td>
+                    <td style="width:20%">
+                        <div style="word-wrap:break-word;">${package.minVersion}</div>
+                    </td>
+                    <td style="width:20%">
+                        <div style="word-wrap:break-word;">${package.maxVersion}</div>
+                    </td>
+                </tr>
+            </c:forEach>
+        </table>
+    </c:if>
+    <hr/>
+    <c:if test="${not empty manifestDetails}">
+        <h3>Manifest Details</h3>
+        <table style="table-layout:fixed;width:100%;">
+            <c:forEach var="manifest" items="${manifestDetails}">
+                <tr>
+                    <td style="width:30%">
+                        <div style="word-wrap:break-word;">
+                            <a href="${show_form_url}" alt="${fn:escapeXml(show_label)}"
+                               title="${fn:escapeXml(show_label)}">${manifest.name}</a>
+                        </div>
+                    </td>
+                    <td style="width:70%">
+                        <div style="word-wrap:break-word;">${manifest.contents}</div>
+                    </td>
+                </tr>
+            </c:forEach>
+        </table>
+    </c:if>
+
 </div>

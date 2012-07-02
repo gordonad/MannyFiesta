@@ -82,6 +82,7 @@ public class Bundle {
     @Version
     @Column(name = "version")
     private Integer version;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
