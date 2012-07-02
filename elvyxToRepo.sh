@@ -1,0 +1,1 @@
+mvn install:install-file -Dfile=lib/elvyx-1.0.24.jar -DgroupId=elvyx -DartifactId=elvyx -Dversion=1.0.24 -Dpackaging=jar -DgeneratePom=true
