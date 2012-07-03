@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields"
+     xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:c="http://java.sun.com/jstl/core_rt"
+     xmlns:spring="http://www.springframework.org/tags"
+     xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+     xmlns:util="urn:jsptagdir:/WEB-INF/tags/util"
+     xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_gordondickens_manny_domain_Project" object="${project}" path="/projects">
+        <field:display field="name" id="s_com_gordondickens_manny_domain_Project_name" object="${project}"/>
+    </page:show>
+
+    <c:if test="${not empty jarDirectories}">
+        <spring:message var="message" code="label_com_gordondickens_manny_domain_project_jarDirectories"
+                        htmlEscape="false"/>
+        <util:panel id="_message" title="${message}" openPane="false">
+            <c:set var="show_label" value="com_gordondickens_manny_domain_JarDirectories"/>
+            <table style="table-layout:fixed;width:100%;">
+                <c:forEach var="jarDirectory" items="${jarDirectories}">
+                    <spring:url value="/jarDirectory/${jarDirectory.id}" var="show_form_url"/>
+                    <spring:url value="/resources/images/show.png" var="show_image_url"/>
+                    <tr>
+                        <td style="width:100%">
+                            <div style="word-wrap:break-word;">
+                                <a href="${show_form_url}" alt="${fn:escapeXml(show_label)}"
+                                   title="${fn:escapeXml(show_label)}">${jarDirectory.name}</a>
+                            </div>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </util:panel>
+    </c:if>
+</div>

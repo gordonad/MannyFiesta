@@ -14,18 +14,20 @@ Run
 - _mvn clean install jetty:run_
   - OR
 - _mvn clean install tomcat7:run_
-
+- [http://localhost:8080/MannyFiesta](http://localhost:8080/MannyFiesta)
 
 
 Mon: 02-Jul-12
 --------------
 - Initial path scanning working and loading details in the database.
+- Added Detail to pages
+  - JarDirectory shows Bundles
+  - Bundles shows imported/exported packages and manifest details
 
 
 
 TODO
 ----
- - Create page for imported and exported packages by Bundle
  - After Jars have been selected - click "Analyze"
  - Compare the Host-Bundle to export-registry
  - Compare the Import-Bundle to Bundles

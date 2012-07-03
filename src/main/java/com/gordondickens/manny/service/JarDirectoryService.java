@@ -11,13 +11,13 @@ import java.util.List;
 @Transactional(readOnly = true)
 public interface JarDirectoryService {
 
-    public abstract long countAllJarDirectorys();
+    public abstract long countAllJarDirectories();
 
     public abstract JarDirectory findJarDirectory(Long id);
 
     public abstract List<Bundle> findBundles(Long jarDirectoryid);
 
-    public abstract List<JarDirectory> findAllJarDirectorys();
+    public abstract List<JarDirectory> findAllJarDirectories();
 
     public abstract List<JarDirectory> findJarDirectoryEntries(int firstResult, int maxResults);
 

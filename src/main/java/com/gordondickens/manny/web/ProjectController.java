@@ -1,8 +1,8 @@
 package com.gordondickens.manny.web;
 
-import com.gordondickens.manny.domain.JarDirectory;
-import com.gordondickens.manny.service.BundleService;
+import com.gordondickens.manny.domain.Project;
 import com.gordondickens.manny.service.JarDirectoryService;
+import com.gordondickens.manny.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -19,12 +19,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.UnsupportedEncodingException;
 
-@RequestMapping("/jardirectorys")
+@RequestMapping("/projects")
 @Controller
-public class JarDirectoryController {
-
+public class ProjectController {
     @Autowired
-    BundleService bundleService;
+    ProjectService projectService;
 
     @Autowired
     JarDirectoryService jarDirectoryService;
@@ -44,82 +43,75 @@ public class JarDirectoryController {
         return pathSegment;
     }
 
-    void populateEditForm(Model uiModel, JarDirectory jarDirectory) {
-        uiModel.addAttribute("jarDirectory", jarDirectory);
-        uiModel.addAttribute("bundles", bundleService.findAllBundles());
+    void populateEditForm(Model uiModel, Project project) {
+        uiModel.addAttribute("project", project);
+        uiModel.addAttribute("jarDirectories", jarDirectoryService.findAllJarDirectories());
     }
 
-    // DELETE
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
     public String delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
-        JarDirectory jarDirectory = jarDirectoryService.findJarDirectory(id);
-        jarDirectoryService.deleteJarDirectory(jarDirectory);
+        Project project = projectService.findProject(id);
+        projectService.deleteProject(project);
         uiModel.asMap().clear();
         uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
         uiModel.addAttribute("size", (size == null) ? maxRecordsPerPage : size.toString());
-        return "redirect:/jardirectorys";
+        return "redirect:/projects";
     }
 
-    // UPDATE - FORM PAGE
     @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
     public String updateForm(@PathVariable("id") Long id, Model uiModel) {
-        populateEditForm(uiModel, jarDirectoryService.findJarDirectory(id));
-        return "jardirectorys/update";
+        populateEditForm(uiModel, projectService.findProject(id));
+        return "projects/update";
     }
 
-    // UPDATE
     @RequestMapping(method = RequestMethod.PUT, produces = "text/html")
-    public String update(@Valid JarDirectory jarDirectory, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+    public String update(@Valid Project project, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
         if (bindingResult.hasErrors()) {
-            populateEditForm(uiModel, jarDirectory);
-            return "jardirectorys/update";
+            populateEditForm(uiModel, project);
+            return "projects/update";
         }
         uiModel.asMap().clear();
-        jarDirectoryService.updateJarDirectory(jarDirectory);
-        return "redirect:/jardirectorys/" + encodeUrlPathSegment(jarDirectory.getId().toString(), httpServletRequest);
+        projectService.updateProject(project);
+        return "redirect:/projects/" + encodeUrlPathSegment(project.getId().toString(), httpServletRequest);
     }
 
-
-    // LIST
     @RequestMapping(produces = "text/html")
     public String list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         if (page != null || size != null) {
             int sizeNo = size == null ? Integer.parseInt(maxRecordsPerPage) : size;
             final int firstResult = page == null ? 0 : (page - 1) * sizeNo;
-            uiModel.addAttribute("jardirectorys", jarDirectoryService.findJarDirectoryEntries(firstResult, sizeNo));
-            float nrOfPages = (float) jarDirectoryService.countAllJarDirectories() / sizeNo;
+            uiModel.addAttribute("projects", projectService.findProjectEntries(firstResult, sizeNo));
+            float nrOfPages = (float) projectService.countAllProjects() / sizeNo;
             uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
         } else {
-            uiModel.addAttribute("jardirectorys", jarDirectoryService.findAllJarDirectories());
+            uiModel.addAttribute("projects", projectService.findAllProjects());
         }
-        return "jardirectorys/list";
+        return "projects/list";
     }
 
-    // SHOW
+
     @RequestMapping(value = "/{id}", produces = "text/html")
     public String show(@PathVariable("id") Long id, Model uiModel) {
-        uiModel.addAttribute("jardirectory", jarDirectoryService.findJarDirectory(id));
+        uiModel.addAttribute("project", projectService.findProject(id));
         uiModel.addAttribute("itemId", id);
-        uiModel.addAttribute("bundles", jarDirectoryService.findBundles(id));
-        return "jardirectorys/show";
+        uiModel.addAttribute("jarDirectories", projectService.findJarDirectories(id));
+        return "projects/show";
     }
 
-    // CREATE FORM
     @RequestMapping(params = "form", produces = "text/html")
     public String createForm(Model uiModel) {
-        populateEditForm(uiModel, new JarDirectory());
-        return "jardirectorys/create";
+        populateEditForm(uiModel, new Project());
+        return "projects/create";
     }
 
-    // CREATE NEW
     @RequestMapping(method = RequestMethod.POST, produces = "text/html")
-    public String create(@Valid JarDirectory jarDirectory, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+    public String create(@Valid Project project, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
         if (bindingResult.hasErrors()) {
-            populateEditForm(uiModel, jarDirectory);
-            return "jardirectorys/create";
+            populateEditForm(uiModel, project);
+            return "projects/create";
         }
         uiModel.asMap().clear();
-        jarDirectoryService.saveJarDirectory(jarDirectory);
-        return "redirect:/jardirectorys/" + encodeUrlPathSegment(jarDirectory.getId().toString(), httpServletRequest);
+        projectService.saveProject(project);
+        return "redirect:/projects/" + encodeUrlPathSegment(project.getId().toString(), httpServletRequest);
     }
 }

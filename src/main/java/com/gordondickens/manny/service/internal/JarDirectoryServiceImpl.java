@@ -203,7 +203,7 @@ public class JarDirectoryServiceImpl implements JarDirectoryService {
     }
 
     @Override
-    public long countAllJarDirectorys() {
+    public long countAllJarDirectories() {
         return jarDirectoryRepository.count();
     }
 
@@ -218,7 +218,7 @@ public class JarDirectoryServiceImpl implements JarDirectoryService {
     }
 
     @Override
-    public List<JarDirectory> findAllJarDirectorys() {
+    public List<JarDirectory> findAllJarDirectories() {
         return jarDirectoryRepository.findAll();
     }
 
